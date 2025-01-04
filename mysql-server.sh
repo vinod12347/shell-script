@@ -52,7 +52,7 @@ mysql -u root
 UPDATE mysql.user SET authentication_string = PASSWORD('root123')
      WHERE User = 'root' AND Host = 'localhost';
 FLUSH PRIVILEGES;
-quit
+quit;
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'root123';
 
 
@@ -62,7 +62,5 @@ sudo systemctl unset-environment MYSQLD_OPTS
 
 
 sudo systemctl start mysqld
-
-mysql -u root -p
 
 
