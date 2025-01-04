@@ -3,7 +3,7 @@ USERID=$(id -u)
 
 echo "userid is :: $USERID"
 
-if [ USERID -ne 0]
+if [ $USERID -ne 0]
  then
     echo "ERROR :: user mush be root user"
     exit 1
