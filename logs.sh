@@ -18,6 +18,7 @@ VALIDATE(){
         exit 1
     else
         echo "$s $G -Success!!"
+    fi
 }
 
 dnf list installed mysql-community-server &>>LOG_FILE_NAME
