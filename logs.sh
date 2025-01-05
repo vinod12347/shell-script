@@ -9,15 +9,15 @@ USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
+N="\e[0m"
 
 VALIDATE(){
-    echo "$1 $2"
     if [ $? -ne 0 ]
     then
-        echo "$2 $R -Failure!!"
+        echo -e "$2 ... $R -Failure!! $N"
         exit 1
     else
-        echo "$2 $G -Success!!"
+        echo -e "$2 ... $G -Success!! $N"
     fi
 }
 echo "scripted started executing at :$TIME_STAMP" &>>$LOG_FILE_NAME
@@ -28,7 +28,7 @@ then #not installed
     dnf install mysql-server -y &>>$LOG_FILE_NAME
     VALIDATE $? "installing mysql server"   
 else
-echo -e "Mysql server alreday $Y installed!!"
+echo -e "Mysql server alreday $Y installed!! $N"
 fi
 
 dnf list installed git &>>$LOG_FILE_NAME
@@ -38,7 +38,7 @@ then #not installed case
     dnf install git -y &>>$LOG_FILE_NAME
     VALIDATE $? "installing git" 
 else
-echo -e "Git alreday $Y installed"
+echo -e "Git alreday $Y installed $N"
 fi 
 
 
