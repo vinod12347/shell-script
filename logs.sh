@@ -11,7 +11,7 @@ G="\e[32m"
 Y="\e[33m"
 
 VALIDATE(){
-
+    echo "$1 $2"
     if [ $1 -ne 0 ]
     then
         echo "$2 $R -Failure!!"
@@ -26,12 +26,12 @@ dnf list installed mysql-community-server &>>$LOG_FILE_NAME
 if [ $? -ne 0 ]
 then
     dnf install mysql-server -y &>>$LOG_FILE_NAME
-
+     echo "mysql server installation status $?"
     if [ $? -ne 0 ]
      then
         VALIDATE $? "Mysql server installation" 
     else
-     VALIDATE $? "Mysql server installation"
+        VALIDATE $? "Mysql server installation"
     fi
 else
 echo -e "Mysql server alreday $Y installed!!"
