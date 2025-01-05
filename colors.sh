@@ -6,6 +6,7 @@ G="\e[32m"
 Y="\e[33m"
 
 VALIDATE(){
+    echo $1
     if [ $1 -eq 0 ]
     then
         echo -e "$2 $G success"
@@ -26,6 +27,7 @@ dnf list installed mysql-community-server
 if [ $? -ne 0 ]
 then 
 sudo dnf install mysql-server -y
+echo $?
 if [ $? -ne 0 ]
 then
     VALIDATE $? "mysql installation"
