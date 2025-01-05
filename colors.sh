@@ -26,7 +26,7 @@ dnf list installed mysql-community-server
 
 if [ $? -ne 0 ]
 then 
-sudo dnf install mysql-server -y
+dnf install mysql-server -y
 echo $?
 if [ $? -ne 0 ]
 then
