@@ -1,0 +1,41 @@
+#!/bin/bash
+
+USERID=$(id -u)
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+
+VALIDATE(){
+    if [ $1 -ne 0 ]
+    then
+        echo -e "$2 $R failure"
+        exit 1
+    else
+        echo -e "$2 $G success"
+    fi
+}
+
+if [ $USERID -ne 0 ]
+then
+    echo -e "$R user must have sudo access"
+    exit 1
+fi
+
+dnf list installed mysql-community-server
+
+if [ $? -ne 0 ]
+then 
+sudo dnf install mysql-server -y
+if [ $? -ne 0 ]
+then
+    VALIDATE $? "mysql installation"
+else
+    VALIDATE $? "mysql installation"
+fi
+else
+    echo -e "Mysql server alreday $Y installed"
+fi
+
+
+
+
