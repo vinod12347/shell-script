@@ -12,7 +12,7 @@ Y="\e[33m"
 
 VALIDATE(){
     echo "$1 $2"
-    if [ $1 -ne 0 ]
+    if [ $? -ne 0 ]
     then
         echo "$2 $R -Failure!!"
         exit 1
@@ -24,15 +24,9 @@ echo "scripted started executing at :$TIME_STAMP" &>>$LOG_FILE_NAME
 dnf list installed mysql-community-server &>>$LOG_FILE_NAME
 
 if [ $? -ne 0 ]
-then
+then #not installed
     dnf install mysql-server -y &>>$LOG_FILE_NAME
-    echo "mysql server installation status $?"
-    if [ $? -ne 0 ]
-     then
-        VALIDATE $? "Mysql server installation" 
-    else
-        VALIDATE $? "Mysql server installation"
-    fi
+    VALIDATE $? "installing mysql server"   
 else
 echo -e "Mysql server alreday $Y installed!!"
 fi
@@ -40,14 +34,9 @@ fi
 dnf list installed git &>>$LOG_FILE_NAME
 
 if [ $? -ne 0 ]
-then
+then #not installed case
     dnf install git &>>$LOG_FILE_NAME
-    if [ $? -ne 0 ]
-    then
-    VALIDATE $? "Git installation"
-    else
-    VALIDATE $? "Git installation failed"
-    fi
+    VALIDATE $? "installing git" 
 else
 echo -e "Git alreday $Y installed"
 fi 
