@@ -2,7 +2,7 @@
 
 LOG_FOLDER="/var/log/shellscript-log"
 TIME_STAMP=$(date +%Y-%m-%d:%H:%M:%S)
-LOG_FIE=$(echo $0 | cut -d "." f1)
+LOG_FIE=$(echo $0 | cut -d "." -f1)
 LOG_FILE_NAME="$LOG_FOLDER/$LOG_FIE-$TIME_STAMP.log"
 
 USERID=$(id -u)
