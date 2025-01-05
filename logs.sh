@@ -26,7 +26,7 @@ dnf list installed mysql-community-server &>>$LOG_FILE_NAME
 if [ $? -ne 0 ]
 then
     dnf install mysql-server -y &>>$LOG_FILE_NAME
-     echo "mysql server installation status $?"
+    echo "mysql server installation status $?"
     if [ $? -ne 0 ]
      then
         VALIDATE $? "Mysql server installation" 
