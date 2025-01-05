@@ -46,6 +46,7 @@ then
     VALIDATE $? "Git installation"
     else
     VALIDATE $? "Git installation failed"
+    fi
 else
 echo -e "Git alreday $Y installed"
 fi 
