@@ -8,6 +8,7 @@ VALIDATE(){
         echo "$2 failure"
     else
         echo "$2 success"
+    fi
 }
 
 dnf list installed mysql-community-server
