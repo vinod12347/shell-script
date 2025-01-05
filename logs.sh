@@ -17,7 +17,7 @@ VALIDATE(){
         echo "$2 $R -Failure!!"
         exit 1
     else
-        echo "$s $G -Success!!"
+        echo "$2 $G -Success!!"
     fi
 }
 echo "scripted started executing at :$TIME_STAMP" &>>$LOG_FILE_NAME
@@ -35,7 +35,7 @@ dnf list installed git &>>$LOG_FILE_NAME
 
 if [ $? -ne 0 ]
 then #not installed case
-    dnf install git &>>$LOG_FILE_NAME
+    dnf install git -y &>>$LOG_FILE_NAME
     VALIDATE $? "installing git" 
 else
 echo -e "Git alreday $Y installed"
