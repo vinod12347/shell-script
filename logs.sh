@@ -20,12 +20,12 @@ VALIDATE(){
         echo "$s $G -Success!!"
     fi
 }
-
-dnf list installed mysql-community-server &>>LOG_FILE_NAME
+echo "scripted started executing at :$TIME_STAMP" &>>$LOG_FILE_NAME
+dnf list installed mysql-community-server &>>$LOG_FILE_NAME
 
 if [ $? -ne 0 ]
 then
-    dnf install mysql-server -y &>>LOG_FILE_NAME
+    dnf install mysql-server -y &>>$LOG_FILE_NAME
 
     if [ $? -ne 0 ]
      then
@@ -37,11 +37,11 @@ else
 echo -e "Mysql server alreday $Y installed!!"
 fi
 
-dnf list installed git &>>LOG_FILE_NAME
+dnf list installed git &>>$LOG_FILE_NAME
 
-if [$? -ne 0 ]
+if [ $? -ne 0 ]
 then
-    dnf install git &>>LOG_FILE_NAME
+    dnf install git &>>$LOG_FILE_NAME
     if [ $? -ne 0 ]
     then
     VALIDATE $? "Git installation"
