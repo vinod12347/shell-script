@@ -2,7 +2,7 @@
 USERID=$(id -u)
 
 LOG_FOLDER="/var/log/shellscript-log"
-TIME_STAMP=$(date +%Y-%m-%d_%H:%M:%S)
+TIME_STAMP=$(date +%Y-%m-%d_%H%M%S)
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 
 R="\e[31m"
