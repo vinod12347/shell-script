@@ -24,7 +24,7 @@ VALIDATE(){
     fi
 }
 
-if [$# -eq 0 ]
+if [ $# -eq 0 ]
 then
     echo "please pass the packages"
     echo "Usage $0 package1 package2"
