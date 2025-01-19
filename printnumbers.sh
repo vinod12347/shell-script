@@ -14,7 +14,6 @@ N=`expr $NUMBER / 2`
 echo $N
 for i in $N
 do
-
 if [ `expr $NUMBER % $i` -eq 0 ]
 then
  echo "$NUMBER is not a prime number"

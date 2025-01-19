@@ -17,10 +17,10 @@ echo "$FILENAME"
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-    echo "$R Error::$N  $2" &>>FILENAME
+    echo "$R Error::$N  $2" &>>$FILENAME
     exit
     else
-    echo "$G Success::$N  $2" &>>FILENAME
+    echo "$G Success::$N  $2" &>>$FILENAME
     fi
 }
 
@@ -39,14 +39,14 @@ fi
 for package in $@
 do
 
-dnf list installed $package &>>FILENAME # check package is alreday installed or not
+dnf list installed $package &>>$FILENAME # check package is alreday installed or not
 
 if [ $? -ne 0 ]
 then
   dnf install $package -y # install the package here
   VALIDATE $? "$package installing"
 else
-    echo "$Y $package alreday installed" &>>FILENAME
+    echo "$Y $package alreday installed" &>>$FILENAME
 fi
 done
 
